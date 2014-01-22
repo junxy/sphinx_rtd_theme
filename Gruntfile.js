@@ -64,6 +64,12 @@ module.exports = function(grunt) {
         files: ['demo_docs/build/**/*'],
         options: { livereload: true }
       }
+    },
+    'gh-pages': {
+      options: {
+        base: 'demo_docs'
+      },
+      src: ['build/**/*', 'index.html']
     }
 
   });
@@ -74,8 +80,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-open');
+  // github pages publish
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['exec:bower_update','clean:build','compass:dev','exec:build_sphinx','connect','open','watch']);
   grunt.registerTask('build', ['exec:bower_update','clean:build','compass:build','exec:build_sphinx']);
+  grunt.registerTask('deploy', ['exec:bower_update','clean:build','compass:build','exec:build_sphinx','gh-pages']);
 }
 

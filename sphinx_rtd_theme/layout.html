@@ -23,7 +23,7 @@
   {% endif %}
 
   {# CSS #}
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <!--<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>-->
 
   {# JS #}
   {% if not embedded %}
@@ -37,9 +37,12 @@
         HAS_SOURCE:  {{ has_source|lower }}
       };
     </script>
+
+    <!-- scriptfiles begin-->
     {%- for scriptfile in script_files %}
       <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
+    <!-- scriptfiles end-->
 
     {% if use_opensearch %}
       <link rel="search" type="application/opensearchdescription+xml" title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}" href="{{ pathto('_static/opensearch.xml', 1) }}"/>
@@ -94,7 +97,7 @@
   {%- endblock %}
   {%- block extrahead %} {% endblock %}
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="//cdn.staticfile.org/modernizr/2.6.2/modernizr.min.js"></script>
 
 </head>
 
